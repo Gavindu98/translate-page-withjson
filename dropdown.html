@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Dropdown Example</title>
+  <!-- Select2 CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+<!-- flag-icon-css CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet" />
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Select2 JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+</head>
+<body>
+
+  <select id="country-select" style="width: '45px';">
+  <option value="US"><span id="en1">Engl</span></option>
+  <option value="FR"><span id="en2">Fren</span></option>
+  
+</select>
+    <!-- Elements to be translated -->
+    <p data-i18n="1">Hello</p>
+    <p data-i18n="2">world</p>
+
+    
+    <script type="text/javascript" src="./translator.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#country-select').select2({
+      templateSelection: formatCountry,
+      templateResult: formatCountry,
+      minimumResultsForSearch: Infinity,
+    });
+  });
+
+  function formatCountry(country) {
+    if (!country.id) {
+      return country.text;
+    }
+    var $country = $(
+      '<span><i class="flag-icon flag-icon-' + country.id.toLowerCase() + '"></i> </span>' 
+    );
+    return $country;
+  };
+</script>
+<!-- Load translations and translate page -->
+
+
+</body>
+</html>

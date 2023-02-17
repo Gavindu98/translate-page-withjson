@@ -1,13 +1,13 @@
 let translations = {
-    "en": {
+    "US": {
         "1": "Hello",
         "2": "world"
     },
-    "es": {
+    "ES": {
         "1": "Hola",
         "2": "mundo"
     },
-    "fr": {
+    "FR": {
         "1": "Bonjour",
         "2": "monde"
     }
@@ -26,8 +26,14 @@ function translatePage(language) {
 
 // loadTranslations();
 
-const languageSelector = document.getElementById('language-selector');
+const languageSelector = document.getElementById('country-select');
+console.log("languageSelector",languageSelector)
 languageSelector.addEventListener('change', (event) => {
     translatePage(event.target.value);
 });
+$('#country-select').on('change', function() {
+    var selectedValue = $(this).val();
+    console.log('Selected value: ' + selectedValue);
+    translatePage(selectedValue);
+  });
 
